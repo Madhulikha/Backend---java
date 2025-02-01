@@ -15,5 +15,8 @@ public class EnvLogger {
         System.out.println("MYSQLDATABASE: " + System.getenv("MYSQLDATABASE"));
         System.out.println("MYSQLUSER: " + System.getenv("MYSQLUSER"));
         System.out.println("MYSQLPASSWORD: " + System.getenv("MYSQLPASSWORD"));
+        String jdbcUrl = "jdbc:mysql://" + System.getenv("MYSQLHOST") + ":" +
+        System.getenv("MYSQLPORT") + "/" + System.getenv("MYSQLDATABASE");
+System.out.println("Resolved JDBC URL: " + jdbcUrl);
     }
 }
