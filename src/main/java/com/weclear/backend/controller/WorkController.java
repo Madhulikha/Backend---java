@@ -14,14 +14,14 @@ import com.weclear.backend.model.Work;
 import java.util.*;
 
 @RestController
-@RequestMapping("/api1")
+@RequestMapping("/services")
 public class WorkController {
 
     @Autowired
     private WorkService workService;
 
     // Get all services
-    @GetMapping("/services")
+    @GetMapping("/getservices")
     public List<Work> getALlWorks() {
         return workService.getALlWorks();
     }
@@ -34,11 +34,13 @@ public class WorkController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @GetMapping("/services/{category}/{subCategory}")
-    public ResponseEntity<List<Work>> getServiceBySubCategory(@PathVariable String category, @PathVariable String subCategory) {
+    @GetMapping("/servicesByCat/{category}/{subCategory}")
+    public ResponseEntity<List<Work>> getServiceBySubCategory(@PathVariable String category,
+            @PathVariable String subCategory) {
         try {
             Category.WorkCategory categoryEnum = Category.WorkCategory.valueOf(category.trim().toUpperCase());
-            Category.WorkSubCategory subCategoryEnum = Category.WorkSubCategory.valueOf(subCategory.trim().toUpperCase());
+            Category.WorkSubCategory subCategoryEnum = Category.WorkSubCategory
+                    .valueOf(subCategory.trim().toUpperCase());
             List<Work> services = workService.getWorksBySubCategory(categoryEnum, subCategoryEnum);
             if (services.isEmpty()) {
                 return ResponseEntity.noContent().build(); // No services found
@@ -54,7 +56,6 @@ public class WorkController {
         }
     }
 
-
     // Create a new service
     @PostMapping("/addservice")
     @PreAuthorize("hasRole('ADMIN')")
@@ -63,7 +64,7 @@ public class WorkController {
     }
 
     // Update an existing service
-    @PutMapping("updateservice/{id}")
+    @PutMapping("/updateservice/{id}")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Work> updateService(@PathVariable Long id, @RequestBody Work serviceDetails) {
         Optional<Work> optionalService = workService.getWorkById(id);
@@ -81,7 +82,7 @@ public class WorkController {
     }
 
     // Delete a service
-    @DeleteMapping("deleteservice/{id}")
+    @DeleteMapping("/deleteservice/{id}")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Void> deleteService(@PathVariable Long id) {
         Optional<Work> optionalService = workService.getWorkById(id);

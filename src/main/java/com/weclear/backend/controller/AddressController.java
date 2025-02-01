@@ -16,7 +16,7 @@ import com.weclear.backend.model.Address;
 import com.weclear.backend.service.AddressService;
 
 @RestController
-@RequestMapping("/api/addresses")
+@RequestMapping("/addresses")
 public class AddressController {
      @Autowired
     private AddressService addressService;

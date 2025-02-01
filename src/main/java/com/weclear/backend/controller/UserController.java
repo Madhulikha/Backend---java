@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import com.weclear.backend.exceptions.UserAlreadyExistsException;
 
 @RestController
-@RequestMapping("/api1/auth")
+@RequestMapping("/auth")
 public class UserController {
     
     @Autowired

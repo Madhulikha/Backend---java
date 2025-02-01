@@ -9,7 +9,7 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/api1/**")
+        registry.addMapping("/**")
                 .allowedOrigins(
                         "http://localhost:3000",
                         "http://weclearfrontend.s3-website.eu-north-1.amazonaws.com",

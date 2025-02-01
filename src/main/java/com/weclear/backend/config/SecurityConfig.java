@@ -16,12 +16,12 @@ public class SecurityConfig {
         http
             .csrf(csrf -> csrf.disable()) // Disable CSRF protection
             .authorizeHttpRequests(authorize -> authorize
-                .requestMatchers("/api1/**").permitAll() // Allow all users 
-                .requestMatchers("/api1/services/**").permitAll()
+                .requestMatchers("/**").permitAll() // Allow all users 
+                .requestMatchers("/services/**").permitAll()
                 
-                .requestMatchers("/api1/addservice").hasRole("ADMIN")
-                .requestMatchers("/api1/updateservice/**").hasRole("ADMIN") 
-                .requestMatchers("/api1/deleteservice/**").hasRole("ADMIN")// Only allow admins to manage services
+                .requestMatchers("/addservice").hasRole("ADMIN")
+                .requestMatchers("/updateservice/**").hasRole("ADMIN") 
+                .requestMatchers("/deleteservice/**").hasRole("ADMIN")// Only allow admins to manage services
                 .anyRequest().permitAll()
             )
             .httpBasic(httpBasic -> {}) // Configure HTTP Basic authentication
