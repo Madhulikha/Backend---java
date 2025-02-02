@@ -17,7 +17,7 @@ public class HttpsRedirectConfig {
 
     private Connector createHttpConnector() {
         Connector connector = new Connector(TomcatServletWebServerFactory.DEFAULT_PROTOCOL);
-        connector.setPort(8080);  // HTTP port
+        connector.setPort(8081);  // HTTP port
         connector.setSecure(false);
         connector.setRedirectPort(8443);  // HTTPS port
         return connector;
