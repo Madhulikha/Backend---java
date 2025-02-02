@@ -12,9 +12,8 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addMapping("/**")
                 .allowedOrigins(
                         "http://localhost:3000",
-                        "http://weclearfrontend.s3-website.eu-north-1.amazonaws.com",
-                        "https://weclear.in",
-                        "https://dkcci0rugat9s.cloudfront.net")
+                        "https://www.weclear.in",
+                        "https://weclear.in")
 
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
