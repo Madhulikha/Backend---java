@@ -17,6 +17,9 @@ public class SecurityConfig {
             .csrf(csrf -> csrf.disable()) // Disable CSRF protection
             .authorizeHttpRequests(authorize -> authorize
                 .requestMatchers("/**").permitAll() // Allow all users 
+                .requestMatchers("/actuator/**").permitAll()  // Allow public access
+                .requestMatchers("/auth/**").permitAll()  // Allow public access
+                
                 .requestMatchers("/services/**").permitAll()
                 
                 .requestMatchers("/addservice").hasRole("ADMIN")
